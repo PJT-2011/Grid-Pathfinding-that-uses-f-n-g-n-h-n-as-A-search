@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AStarVisual.AStarPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="A* Visual Pathfinding">
+
+    <VerticalStackLayout Padding="12" Spacing="8">
+
+        <!-- Canvas -->
+        <GraphicsView x:Name="Canvas" HeightRequest="520" />
+
+        <!-- Row 1: Modes -->
+        <HorizontalStackLayout Spacing="10">
+            <Label Text="Mode:" VerticalOptions="Center" />
+            <RadioButton x:Name="rbWall"  Content="Wall"  IsChecked="True" CheckedChanged="OnModeChanged"/>
+            <RadioButton x:Name="rbErase" Content="Erase" CheckedChanged="OnModeChanged"/>
+            <RadioButton x:Name="rbStart" Content="Start" CheckedChanged="OnModeChanged"/>
+            <RadioButton x:Name="rbGoal"  Content="Goal"  CheckedChanged="OnModeChanged"/>
+
+            <CheckBox x:Name="chkDiag" IsChecked="False" CheckedChanged="OnDiagChanged"/>
+            <Label Text="Diagonal" VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+
+        <!-- Row 2: Controls -->
+        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+            <Button Text="Run A*" Clicked="OnRun"/>
+            <Button Text="Stop" Clicked="OnStop"/>
+            <Button Text="Clear" Clicked="OnClear"/>
+            <Button Text="Random" Clicked="OnRandom"/>
+            <CheckBox x:Name="chkAnimate" IsChecked="True"/>
+            <Label Text="Animate" VerticalOptions="Center"/>
+            <Label Text="Speed" VerticalOptions="Center"/>
+            <Slider x:Name="speedSlider" Minimum="0" Maximum="200" Value="40" WidthRequest="140"/>
+            <CheckBox x:Name="chkScores" IsChecked="False"/>
+            <Label Text="Show f/g/h" VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+
+        <Label x:Name="lblInfo" />
+    </VerticalStackLayout>
+</ContentPage>
